@@ -8,9 +8,14 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
-    <video src="/{{video}}" id="vid" controls></video>
+    <video src="/{{video}}" id="vid" controls onplay="addVideoClass()"></video>
     <div class="controls">
         <a href="/{{video}}"><i class="fa fa-download"></i></a> <a href="/videoManager"><i class="fa fa-arrow-left"></i></a>
     </div>
+    <script>
+        function addVideoClass() {
+            document.getElementById("vid").setAttribute("class", "played")
+        }
+    </script>
 </body>
 </html>

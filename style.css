@@ -21,6 +21,9 @@ video {
     height: 80vh;
     background-color: black;
 }
+video.played {
+    background-color: #553c99;
+}
 
 i.fa {
     color:white;
