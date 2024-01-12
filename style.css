@@ -1,0 +1,48 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@500;700&display=swap');
+
+body {
+    background-color: #553c99;
+    color: white;
+    font-family: 'Quicksand', sans-serif;
+}
+
+a {
+    color: white;
+    text-decoration: none;
+}
+
+a:visited {
+    color: white;
+}
+
+video {
+    width: 99vw;
+    border-radius: 20px;
+    height: 80vh;
+    background-color: black;
+}
+
+i.fa {
+    color:white;
+}
+
+div.controls {
+    border-radius: 20px;
+    padding: 20px;
+    background-color: #3a2968;
+}
+
+div.card {
+    border-radius: 20px;
+    padding: 10px;
+    background-color: #3a2968;
+    border-width: thick;
+    border-color: #120c20;
+}
+
+ul.folders {
+    border-radius: 20px;
+    padding: 20px;
+    background-color: #3a2968;
+    list-style-type: none;
+}

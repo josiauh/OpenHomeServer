@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OHS | Video Manager</title>
+    <link rel="stylesheet" href="/style.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <ul class="folders">
+        <h1>Videos</h1>
+        {% if videos %}
+            {% for video in videos %}
+                <li><a href="video/{{video}}">{{ video }}</a></li>
+            {% endfor %}
+        {% else %}
+            <p>No videos. Upload one below!</p>
+        {% endif %}
+    </ul>
+    <div class="controls">
+        <i class="fa fa-upload" style="cursor: pointer;" onclick="triggerFile()"></i><a href="/"><i class="fa fa-arrow-left"></i></a>
+    </div>
+    <input id="uploadDialog" type="file" style="display: none" />
+    <script src="https://code.jquery.com/jquery-2.2.4.js"></script>
+    <script>
+      function triggerFile() {
+        document.getElementById("uploadDialog").click()
+      }
+
+      document.getElementById("uploadDialog").addEventListener("change", function(event) {
+        var data = new FormData()
+        data.append('video', document.getElementById("uploadDialog").files[0])
+        data.append('PIN', prompt("Input your PIN..."))
+        fetch("/uploadVideo", {
+            method: "POST",
+            body: data
+          }).then(x => {
+            if (x.status == 401) {
+                alert("Wrong PIN.")
+            }
+            if (x.status == 400)  {
+                alert(`Form malformed. Error:\n${x.statusText}`)
+            }
+            if (x.status == 200) {
+                location.reload()
+            }
+          });        
+      })
+    </script>
+</body>
+</html>
